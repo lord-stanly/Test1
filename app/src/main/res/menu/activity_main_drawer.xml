@@ -15,23 +15,23 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Sladeshow" />
+            android:title="@string/menu_slideshow" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Tools" />
+            android:title="@string/menu_tools" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Разное">
         <menu>
         <item
             android:id="@+id/nav_shape"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Shape" />
+            android:title="@string/menu_shape" />
         <item
             android:id="@+id/nav_send"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Send" />
+            android:title="@string/menu_send" />
         </menu>
     </item>
 
