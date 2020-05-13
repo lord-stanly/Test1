@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private DrawerLayout drawer;
 private ListView list;
+private String[] array;
+private ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Запуск основного экрана
@@ -32,6 +35,9 @@ private ListView list;
         setContentView(R.layout.activity_main);
 
         list = findViewById(R.id.listView);
+        array = getResources().getStringArray(R.array.fish_array);
+        adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,array);
+        list.setAdapter(adapter);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
