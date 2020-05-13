@@ -23,6 +23,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private DrawerLayout drawer;
 private ListView list;
@@ -36,7 +39,7 @@ private ArrayAdapter<String> adapter;
 
         list = findViewById(R.id.listView);
         array = getResources().getStringArray(R.array.fish_array);
-        adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,array);
+        adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, new ArrayList<String>(Arrays.asList(array)));
         list.setAdapter(adapter);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -62,29 +65,56 @@ private ArrayAdapter<String> adapter;
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
-        if(id == R.id.nav_home)
+        if(id == R.id.id_fish)
         {
-            Toast.makeText(this, "вы нажали nav_home", Toast.LENGTH_SHORT).show();
+            //Очистка и Перезаполнение списка
+            array = getResources().getStringArray(R.array.fish_array);
+            adapter.clear();
+            adapter.addAll(array);
+            //Передаем адаптару уведомления что есть изменения
+            adapter.notifyDataSetChanged();
+            //Выводим подсказку что нажата кнопка Рыба
+            Toast.makeText(this, "Рыба", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.nav_gallery)
+        else if(id == R.id.id_na)
         {
-            Toast.makeText(this, "вы нажали nav_gallery", Toast.LENGTH_SHORT).show();
+            array = getResources().getStringArray(R.array.na_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(this, "Наживка", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.nav_slideshow)
+        else if(id == R.id.id_sna)
         {
-            Toast.makeText(this, "вы нажали nav_slideshow", Toast.LENGTH_SHORT).show();
+            array = getResources().getStringArray(R.array.sna_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(this, "Снасти", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.nav_tools)
+        else if(id == R.id.id_pri)
         {
-            Toast.makeText(this, "вы нажали nav_tools", Toast.LENGTH_SHORT).show();
+            array = getResources().getStringArray(R.array.pri_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(this, "Прикормка", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.nav_shape)
+        else if(id == R.id.id_history)
         {
-            Toast.makeText(this, "вы нажали nav_shape", Toast.LENGTH_SHORT).show();
+            array = getResources().getStringArray(R.array.hitory_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(this, "Истории", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.nav_send)
+        else if(id == R.id.id_advice)
         {
-            Toast.makeText(this, "вы нажали nav_send", Toast.LENGTH_SHORT).show();
+            array = getResources().getStringArray(R.array.advice_array);
+            adapter.clear();
+            adapter.addAll(array);
+            adapter.notifyDataSetChanged();
+            Toast.makeText(this, "Советы", Toast.LENGTH_SHORT).show();
         }
         //Закрывает меню при любом нажатии на основные кнопки
         drawer.closeDrawer(GravityCompat.START);
