@@ -1,9 +1,11 @@
 package ru.mail.fizikello.test1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,6 +33,7 @@ private DrawerLayout drawer;
 private ListView list;
 private String[] array;
 private ArrayAdapter<String> adapter;
+private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Запуск основного экрана
@@ -41,9 +44,9 @@ private ArrayAdapter<String> adapter;
         array = getResources().getStringArray(R.array.fish_array);
         adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, new ArrayList<String>(Arrays.asList(array)));
         list.setAdapter(adapter);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -51,6 +54,15 @@ private ArrayAdapter<String> adapter;
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        //Добовляем сшушателя нажатия для контента
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent = new Intent(MainActivity.this,Text_Content_Activity.class);
+                startActivities(intent);
+            }
+        });
 
 
     }
@@ -59,6 +71,7 @@ private ArrayAdapter<String> adapter;
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        toolbar.setTitle(R.string.fish);
         return true;
     }
 
@@ -67,6 +80,8 @@ private ArrayAdapter<String> adapter;
         int id = menuItem.getItemId();
         if(id == R.id.id_fish)
         {
+            //меняем заголовок на Тему из списка
+            toolbar.setTitle(R.string.fish);
             //Очистка и Перезаполнение списка
             array = getResources().getStringArray(R.array.fish_array);
             adapter.clear();
@@ -78,6 +93,7 @@ private ArrayAdapter<String> adapter;
         }
         else if(id == R.id.id_na)
         {
+            toolbar.setTitle(R.string.na);
             array = getResources().getStringArray(R.array.na_array);
             adapter.clear();
             adapter.addAll(array);
@@ -86,6 +102,7 @@ private ArrayAdapter<String> adapter;
         }
         else if(id == R.id.id_sna)
         {
+            toolbar.setTitle(R.string.sna);
             array = getResources().getStringArray(R.array.sna_array);
             adapter.clear();
             adapter.addAll(array);
@@ -94,6 +111,7 @@ private ArrayAdapter<String> adapter;
         }
         else if(id == R.id.id_pri)
         {
+            toolbar.setTitle(R.string.pri);
             array = getResources().getStringArray(R.array.pri_array);
             adapter.clear();
             adapter.addAll(array);
@@ -102,6 +120,7 @@ private ArrayAdapter<String> adapter;
         }
         else if(id == R.id.id_history)
         {
+            toolbar.setTitle(R.string.history);
             array = getResources().getStringArray(R.array.hitory_array);
             adapter.clear();
             adapter.addAll(array);
@@ -110,6 +129,7 @@ private ArrayAdapter<String> adapter;
         }
         else if(id == R.id.id_advice)
         {
+            toolbar.setTitle(R.string.advice);
             array = getResources().getStringArray(R.array.advice_array);
             adapter.clear();
             adapter.addAll(array);
