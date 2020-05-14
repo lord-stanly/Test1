@@ -1,5 +1,6 @@
 package ru.mail.fizikello.test1;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -11,5 +12,12 @@ public class Text_Content_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //Подключаем наш экран
         setContentView(R.layout.text_content);
+        reciveIntent();
+    }
+
+    private void reciveIntent()
+    {
+        Intent i = getIntent();
+
     }
 }

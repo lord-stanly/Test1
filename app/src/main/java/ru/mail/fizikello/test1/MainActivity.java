@@ -34,6 +34,8 @@ private ListView list;
 private String[] array;
 private ArrayAdapter<String> adapter;
 private Toolbar toolbar;
+private int category_index;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Запуск основного экрана
@@ -60,6 +62,8 @@ private Toolbar toolbar;
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Intent intent = new Intent(MainActivity.this,Text_Content_Activity.class);
+                intent.putExtra("category", category_index);
+                intent.putExtra("position", category_index);
                 startActivity(intent);
             }
         });
@@ -81,6 +85,7 @@ private Toolbar toolbar;
         int id = menuItem.getItemId();
         if(id == R.id.id_fish)
         {
+
             //меняем заголовок на Тему из списка
             toolbar.setTitle(R.string.fish);
             //Очистка и Перезаполнение списка
@@ -91,6 +96,8 @@ private Toolbar toolbar;
             adapter.notifyDataSetChanged();
             //Выводим подсказку нажата кнопка Рыба
             Toast.makeText(this, "Рыба", Toast.LENGTH_SHORT).show();
+            //Индекс при нажатии кнопки
+            category_index = 0;
         }
         else if(id == R.id.id_na)
         {
@@ -100,6 +107,7 @@ private Toolbar toolbar;
             adapter.addAll(array);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Наживка", Toast.LENGTH_SHORT).show();
+            category_index = 1;
         }
         else if(id == R.id.id_sna)
         {
@@ -109,6 +117,7 @@ private Toolbar toolbar;
             adapter.addAll(array);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Снасти", Toast.LENGTH_SHORT).show();
+            category_index = 2;
         }
         else if(id == R.id.id_pri)
         {
@@ -118,6 +127,7 @@ private Toolbar toolbar;
             adapter.addAll(array);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Прикормка", Toast.LENGTH_SHORT).show();
+            category_index = 3;
         }
         else if(id == R.id.id_history)
         {
@@ -127,6 +137,7 @@ private Toolbar toolbar;
             adapter.addAll(array);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Истории", Toast.LENGTH_SHORT).show();
+            category_index = 4;
         }
         else if(id == R.id.id_advice)
         {
@@ -136,6 +147,7 @@ private Toolbar toolbar;
             adapter.addAll(array);
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Советы", Toast.LENGTH_SHORT).show();
+            category_index = 5;
         }
         //Закрывает меню при любом нажатии на основные кнопки
         drawer.closeDrawer(GravityCompat.START);
