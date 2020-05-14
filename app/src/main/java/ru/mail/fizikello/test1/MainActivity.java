@@ -60,12 +60,13 @@ private Toolbar toolbar;
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Intent intent = new Intent(MainActivity.this,Text_Content_Activity.class);
-                startActivities(intent);
+                startActivity(intent);
             }
         });
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,7 +89,7 @@ private Toolbar toolbar;
             adapter.addAll(array);
             //Передаем адаптару уведомления что есть изменения
             adapter.notifyDataSetChanged();
-            //Выводим подсказку что нажата кнопка Рыба
+            //Выводим подсказку нажата кнопка Рыба
             Toast.makeText(this, "Рыба", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.id_na)
