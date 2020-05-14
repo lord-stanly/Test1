@@ -63,7 +63,7 @@ private int category_index;
             {
                 Intent intent = new Intent(MainActivity.this,Text_Content_Activity.class);
                 intent.putExtra("category", category_index);
-                intent.putExtra("position", category_index);
+                intent.putExtra("position", position);
                 startActivity(intent);
             }
         });
