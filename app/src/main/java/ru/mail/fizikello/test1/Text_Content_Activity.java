@@ -1,6 +1,7 @@
 package ru.mail.fizikello.test1;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Text_Content_Activity extends AppCompatActivity {
     private TextView text_content;
+    private Typeface face_1;
     private ImageView iContent;
     private int position;
     private int category;
@@ -22,8 +24,7 @@ public class Text_Content_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //Подключаем наш экран
         setContentView(R.layout.text_content);
-        text_content = findViewById(R.id.text_main_content);
-        iContent = findViewById(R.id.imageContent);
+        init();
         reciveIntent();
     }
 
@@ -58,6 +59,15 @@ public class Text_Content_Activity extends AppCompatActivity {
                 break;
         }
 
+
+    }
+
+    private void init(){
+        text_content = findViewById(R.id.text_main_content);
+        iContent = findViewById(R.id.imageContent);
+        //Подгружаем шрифты
+        face_1 = Typeface.createFromAsset(this.getAssets(),"fonts/RuslanDisplay-Regular.ttf");
+        text_content.setTypeface(face_1);
 
     }
 }

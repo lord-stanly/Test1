@@ -48,4 +48,7 @@
     <string name="na_3">Список 3 Наживка номер два</string>
     <string name="na_4">Список 4 Наживка номер два</string>
     <string name="na_5">Список 5 Наживка номер два</string>
+
+    <string name="button_start">START</string>
+
 </resources>
