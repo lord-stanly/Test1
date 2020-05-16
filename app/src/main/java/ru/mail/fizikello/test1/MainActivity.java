@@ -85,72 +85,46 @@ private int category_index;
         int id = menuItem.getItemId();
         if(id == R.id.id_fish)
         {
-
-            //меняем заголовок на Тему из списка
-            toolbar.setTitle(R.string.fish);
-            //Очистка и Перезаполнение списка
-            array = getResources().getStringArray(R.array.fish_array);
-            adapter.clear();
-            adapter.addAll(array);
-            //Передаем адаптару уведомления что есть изменения
-            adapter.notifyDataSetChanged();
-            //Выводим подсказку нажата кнопка Рыба
-            Toast.makeText(this, "Рыба", Toast.LENGTH_SHORT).show();
-            //Индекс при нажатии кнопки
-            category_index = 0;
+            fillArray(R.string.fish, R.array.fish_array, 0, "Рыба");
         }
         else if(id == R.id.id_na)
         {
-            toolbar.setTitle(R.string.na);
-            array = getResources().getStringArray(R.array.na_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            Toast.makeText(this, "Наживка", Toast.LENGTH_SHORT).show();
-            category_index = 1;
+            fillArray(R.string.na, R.array.na_array, 1, "Наживка" );
         }
         else if(id == R.id.id_sna)
         {
-            toolbar.setTitle(R.string.sna);
-            array = getResources().getStringArray(R.array.sna_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            Toast.makeText(this, "Снасти", Toast.LENGTH_SHORT).show();
-            category_index = 2;
+            fillArray(R.string.sna, R.array.sna_array, 2, "Снасти" );
         }
         else if(id == R.id.id_pri)
         {
-            toolbar.setTitle(R.string.pri);
-            array = getResources().getStringArray(R.array.pri_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            Toast.makeText(this, "Прикормка", Toast.LENGTH_SHORT).show();
-            category_index = 3;
+            fillArray(R.string.pri, R.array.pri_array, 3, "Прикормка" );
         }
         else if(id == R.id.id_history)
         {
-            toolbar.setTitle(R.string.history);
-            array = getResources().getStringArray(R.array.hitory_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            Toast.makeText(this, "Истории", Toast.LENGTH_SHORT).show();
-            category_index = 4;
+            fillArray(R.string.history, R.array.hitory_array, 4, "Истории" );
         }
         else if(id == R.id.id_advice)
         {
-            toolbar.setTitle(R.string.advice);
-            array = getResources().getStringArray(R.array.advice_array);
-            adapter.clear();
-            adapter.addAll(array);
-            adapter.notifyDataSetChanged();
-            Toast.makeText(this, "Советы", Toast.LENGTH_SHORT).show();
-            category_index = 5;
+            fillArray(R.string.advice, R.array.advice_array, 5, "Советы" );
         }
         //Закрывает меню при любом нажатии на основные кнопки
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    //оптимизирую код
+    private void fillArray(int title, int arrayList, int index, String textToast)
+    {
+        //меняем заголовок на Тему из списка
+        toolbar.setTitle(title);
+        //Очистка и Перезаполнение списка
+        array = getResources().getStringArray(arrayList);
+        adapter.clear();
+        adapter.addAll(array);
+        //Передаем адаптару уведомления что есть изменения
+        adapter.notifyDataSetChanged();
+        //Выводим подсказку нажата кнопка Рыба
+        Toast.makeText(this, textToast, Toast.LENGTH_SHORT).show();
+        //Индекс при нажатии кнопки
+        category_index = index;
     }
 }
